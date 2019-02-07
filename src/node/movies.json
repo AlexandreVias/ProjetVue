@@ -1,0 +1,26 @@
+[
+  {
+    "title": "L'étrange noël de M. Jack",
+    "year": 1994,
+    "language": "Français",
+    "synopsys": "Jack Skellington, un épouvantail squelettique surnommé « le Roi des citrouilles » (Pumpkin King en version originale), vit dans la ville d'Halloween. En tant que maître de l'épouvante, Jack occupe ses journées à préparer la prochaine fête d'Halloween.",
+    "creator": {
+      "name": "Henry Selick",
+      "nationality": "Américain",
+      "dateBirth": "30 novembre 1952"
+    },
+    "genre": "Cinéma de fantasy/Musical"
+  },
+  {
+    "title": "Interstellar",
+    "year": 2014,
+    "language": "Français",
+    "synopsys": "Alors que la Terre se meurt, une équipe d'astronautes franchit un trou de ver apparu près de Saturne conduisant à une autre galaxie, cela dans le but d'explorer un nouveau système stellaire et l'espoir de trouver une nouvelle planète habitable par l'humanité afin de la sauver.",
+    "creator": {
+      "name": "Christopher Nolan",
+      "nationality": "Britanno-américain",
+      "dateBirth": "30 juillet 1970"
+    },
+    "genre": "Drame / FIlm à énigme"
+  }
+]
