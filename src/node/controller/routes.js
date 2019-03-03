@@ -1,38 +1,33 @@
-const express = require('express'),
-    app = express();
 let bodyParser = require("body-parser");
+const
+    express = require('express'),
+    app = express(),
+    mongo = require('./mongo'),
+    multer = require('multer');
+
+let upload = multer({dest: '/tmp/'});
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 
-app.get('/', function (req, res) {
-    res.send('GET request to the homepage');
-});
+app.get('/listMovies', (req, res) =>
+    mongo.listMovies().then(value => res.send(value))
+);
 
-let MongoClient = require("mongodb").MongoClient;
-const
-    url = "mongodb://localhost:27017",
-    dbName = "ProjetVueDB",
-    client = new MongoClient(url);
+app.patch('/movie', (req, res) =>
+    mongo.updateMovie(req.body).then(value => res.send(value))
+);
 
-client.connect(err => {
-    if (err) throw err;
-    console.log("gg");
-    const db = client.db(dbName);
-    findDocuments(db);
-    client.close();
-});
+app.post('/movie', (req, res) =>
+    mongo.createMovie(req.body).then(value => res.send(value))
+);
 
-const findDocuments = function(db, callback) {
-    const collection = db.collection("movies");
-    collection.find({}).toArray(function(err, docs) {
-        console.log("Found the following records");
-        console.log(docs);
-        callback(docs);
-    });
-};
+app.delete('/movie/:id', (req, res) =>
+    mongo.deleteMovie(req.params.id).then(value => res.send(value))
+);
+
+app.post('/movie/:id/image', upload.single('avatar'), (req, res) =>
+    mongo.insertImage(req.params.id, req.file).then(value => res.send(value))
+);
 
 module.exports = app;
-
-//http://mongodb.github.io/node-mongodb-native/3.1/quick-start/quick-start/
-//https://www.w3schools.com/nodejs/nodejs_mongodb_find.asp
